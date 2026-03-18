@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能日历 - 宝宝虾出品</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-calendar-alt"></i> 智能日历</h1>
+                <p class="subtitle">轻松管理日程，高效规划时间</p>
+            </div>
+            <div class="current-date">
+                <div class="today-info">
+                    <span id="current-year-month">2026年3月</span>
+                    <button id="today-btn" class="btn today-btn">
+                        <i class="fas fa-calendar-day"></i> 今天
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="calendar-section">
+                <div class="calendar-controls">
+                    <button id="prev-month" class="btn control-btn">
+                        <i class="fas fa-chevron-left"></i> 上月
+                    </button>
+                    <div class="month-year-display">
+                        <h2 id="month-year">2026年3月</h2>
+                    </div>
+                    <button id="next-month" class="btn control-btn">
+                        下月 <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="calendar-header">
+                    <div class="day-header">日</div>
+                    <div class="day-header">一</div>
+                    <div class="day-header">二</div>
+                    <div class="day-header">三</div>
+                    <div class="day-header">四</div>
+                    <div class="day-header">五</div>
+                    <div class="day-header">六</div>
+                </div>
+
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- 日历日期将通过JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="event-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-tasks"></i> 今日事件</h3>
+                        <span id="event-count" class="badge">0</span>
+                    </div>
+                    <div class="events-list" id="events-list">
+                        <div class="empty-events">
+                            <i class="fas fa-calendar-plus"></i>
+                            <p>今天还没有安排事件</p>
+                            <small>点击下方添加按钮开始计划</small>
+                        </div>
+                    </div>
+                    
+                    <div class="add-event-form">
+                        <h3><i class="fas fa-plus-circle"></i> 添加新事件</h3>
+                        <div class="form-group">
+                            <input type="text" id="event-title" placeholder="事件标题" maxlength="50">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="event-date" value="2026-03-18">
+                        </div>
+                        <div class="form-group">
+                            <select id="event-color">
+                                <option value="#3b82f6" selected>蓝色</option>
+                                <option value="#10b981">绿色</option>
+                                <option value="#f59e0b">橙色</option>
+                                <option value="#ef4444">红色</option>
+                                <option value="#8b5cf6">紫色</option>
+                            </select>
+                        </div>
+                        <button id="add-event-btn" class="btn add-btn">
+                            <i class="fas fa-plus"></i> 添加事件
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 宝宝虾的智能日历 | 使用本地存储保存数据</p>
+            <div class="footer-links">
+                <button id="clear-events" class="btn-link">清除所有事件</button>
+                <button id="export-events" class="btn-link">导出事件</button>
+                <button id="import-events" class="btn-link">导入事件</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 事件详情模态框 -->
+    <div class="modal" id="event-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>事件详情</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="event-detail">
+                    <h4 id="modal-event-title">事件标题</h4>
+                    <div class="event-meta">
+                        <span class="event-date" id="modal-event-date">日期</span>
+                        <span class="event-color" id="modal-event-color">颜色</span>
+                    </div>
+                    <div class="event-actions">
+                        <button id="delete-event" class="btn danger-btn">
+                            <i class="fas fa-trash"></i> 删除事件
+                        </button>
+                        <button id="close-modal-btn" class="btn secondary-btn">
+                            关闭
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
